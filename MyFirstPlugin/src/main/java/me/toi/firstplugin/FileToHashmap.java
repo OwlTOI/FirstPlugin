@@ -106,7 +106,7 @@ public class FileToHashmap {
         FileWriter fw = new FileWriter(filePath + "data.data");
         PrintWriter pw = new PrintWriter(fw);
 
-        map.forEach((k, v) -> pw.printf("%s:%s", k, v));
+        map.forEach((k, v) -> pw.printf("%s:%s", k, v)); //Rewrite every line with content of Hashmap
 
         if (pw != null) { //probably overkill security
             try {

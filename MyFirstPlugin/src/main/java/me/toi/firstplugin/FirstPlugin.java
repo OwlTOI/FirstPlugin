@@ -59,4 +59,4 @@ ice / Snowball deals dmg (-2 hearts) \ Deals Less dmg (-1 heart per hit)
 mole / Can insta break stone \ no debuff
 ender / Do not get pearls consumed / Immune to pearls dmg / has cooldown on pearls(30s) \ Get dmged in water (Poison 1)
 shark / Conduit power (3) and Dolphin's grace (2) effect when in water \ no debuff
-*/ 
+*/
