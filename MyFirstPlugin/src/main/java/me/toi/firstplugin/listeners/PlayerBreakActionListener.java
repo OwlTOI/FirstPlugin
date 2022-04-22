@@ -25,7 +25,7 @@ public class PlayerBreakActionListener implements Listener {
         Player player = event.getPlayer();
         if (doesPlayerHaveRole(player,"mole")) { //if player has role Mole
             if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
-                if (event.getClickedBlock().getType().equals(Material.STONE)) {
+                if (Objects.requireNonNull(event.getClickedBlock()).getType().equals(Material.STONE)) {
                     event.getClickedBlock().breakNaturally(new ItemStack(Material.NETHERITE_PICKAXE));
                 }
             }

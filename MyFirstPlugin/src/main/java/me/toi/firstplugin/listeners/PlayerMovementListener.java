@@ -16,7 +16,6 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
@@ -46,7 +45,7 @@ public class PlayerMovementListener implements Listener {
         Material[] itemList = {
                 Material.WOODEN_SWORD,Material.STONE_SWORD,Material.IRON_SWORD,Material.GOLDEN_SWORD,Material.DIAMOND_SWORD,
                 Material.NETHERITE_SWORD,Material.WOODEN_AXE,Material.STONE_AXE,Material.IRON_AXE,Material.GOLDEN_AXE,
-                Material.DIAMOND_AXE,Material.NETHERITE_AXE,Material.SHIELD,Material.BOW};
+                Material.DIAMOND_AXE,Material.NETHERITE_AXE,Material.SHIELD};
         if (doesPlayerHaveRole(player, "thief")) { //if player has role Thief
             boolean itemListCheck = false;
             for (Material material : itemList) {
