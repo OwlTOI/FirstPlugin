@@ -19,7 +19,7 @@ import static me.toi.firstplugin.FileToHashmap.getRole;
 import static me.toi.firstplugin.FirstPlugin.doesPlayerHaveRole;
 
 public class PlayerBreakActionListener implements Listener {
-    private final HashMap<UUID, Long> cooldown = new HashMap<>(); //Create Hashmap for player/cooldown // if error remove final
+    private final HashMap<UUID, Long> cooldown = new HashMap<>(); //Create Hashmap for player/cooldown
     @EventHandler
     public static void isBreakingStone(PlayerInteractEvent event) { //Check for block breaking action
         Player player = event.getPlayer();

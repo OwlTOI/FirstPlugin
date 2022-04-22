@@ -14,37 +14,36 @@ public class AdminInfoCommands implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 
         if(args.length == 0) {
-            System.out.println("Missing args");
+            sender.sendMessage("Missing args");
             return true;
         }
         if(Bukkit.getServer().getPlayerExact(args[0]) == null) { //If player is not found
-            System.out.println("Could not find specified player");
+            sender.sendMessage("Could not find specified player");
         }
         Player target = Bukkit.getServer().getPlayerExact(args[0]);
         String uuid = String.valueOf(target.getUniqueId());
         if(args[1].equals("role")){ // /admininfo [Player] role
-            System.out.println("Looking for roles");
             if (args.length>2) {
                 if (doesPlayerHaveRole(target, args[2])) { //fplug [Player] role [role]
-                    System.out.println(target.getName() + " is in role " + args[2]);
+                    sender.sendMessage(target.getName() + " is in role " + args[2]);
                 } else {
-                    System.out.println(target.getName() + " is not in role " + args[2]);
+                    sender.sendMessage(target.getName() + " is not in role " + args[2]);
                 }
             }else {
                 if (getRole(uuid) == " " || getRole(uuid) == null) {
-                    System.out.println(target.getName() + " does not have a role");
+                    sender.sendMessage(target.getName() + " does not have a role");
                 } else {
-                    System.out.println(target.getName() + " has the role " + getRole(uuid));
+                    sender.sendMessage(target.getName() + " has the role " + getRole(uuid));
                 }
             }
         }
         if(args[1].equals("add")){ //fplug [Player] add [role]
-            System.out.println("trying to add");
             if (args.length>2) {
                 addEntry(String.valueOf(target.getUniqueId()), args[2]);
                 applyBuff(target);
+                sender.sendMessage("Role " +args[2]+ " added to " +target.getDisplayName());
             }else{
-                System.out.println("Missing role to add");
+                sender.sendMessage("Missing role to add");
             }
         }
         return true;

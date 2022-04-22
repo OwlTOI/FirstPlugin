@@ -19,9 +19,9 @@ public final class ProjectileListener implements Listener {
         Entity source = event.getDamager();
         if (source.getType() == EntityType.SNOWBALL) { //Is snowball ?
             ProjectileSource ps = ((Snowball) event.getDamager()).getShooter(); // Get source
-            if (!(ps instanceof Player)) {
+            if (!(ps instanceof Player)) {  // Is player ?
                 return;
-            } // Is player ?
+            }
             Player shooter = (Player) ps; //From Entity (ps) to Player (shooter)
             if (doesPlayerHaveRole(shooter, "ice")) {
                 event.setDamage(4);

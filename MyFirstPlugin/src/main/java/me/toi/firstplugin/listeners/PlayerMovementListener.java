@@ -2,6 +2,7 @@ package me.toi.firstplugin.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -15,6 +16,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
@@ -23,7 +25,7 @@ import static me.toi.firstplugin.FirstPlugin.doesPlayerHaveRole;
 
 
 public class PlayerMovementListener implements Listener {
-    private final HashMap<UUID, Long> cooldown = new HashMap<>(); //Create Hashmap for player/cooldown //if error remove final
+    private final HashMap<UUID, Long> cooldown = new HashMap<>(); //Create Hashmap for player/cooldown
 
     @EventHandler
     public void onFallDamage(EntityDamageEvent event) { //Check for Entity dmg
@@ -41,8 +43,19 @@ public class PlayerMovementListener implements Listener {
     @EventHandler
     public void Leap(PlayerInteractEvent event) { //Check for player interaction
         Player player = event.getPlayer();
+        Material[] itemList = {
+                Material.WOODEN_SWORD,Material.STONE_SWORD,Material.IRON_SWORD,Material.GOLDEN_SWORD,Material.DIAMOND_SWORD,
+                Material.NETHERITE_SWORD,Material.WOODEN_AXE,Material.STONE_AXE,Material.IRON_AXE,Material.GOLDEN_AXE,
+                Material.DIAMOND_AXE,Material.NETHERITE_AXE,Material.SHIELD};
         if (doesPlayerHaveRole(player, "thief")) { //if player has role Thief
-            if (event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
+            boolean itemListCheck = false;
+            for (Material material : itemList) {
+                if (player.getInventory().getItemInMainHand().getType() == material || player.getInventory().getItemInOffHand().getType() == material){
+                    itemListCheck = true;
+                    break;
+                }
+            }
+            if (event.getAction().equals(Action.RIGHT_CLICK_AIR) && itemListCheck) {
                 if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis()) {
                     long remaining = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
                     player.sendMessage(ChatColor.RED + "This spell is on cooldown (" + remaining / 1000 + "s)");
