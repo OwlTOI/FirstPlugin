@@ -23,7 +23,7 @@ public final class ProjectileListener implements Listener {
                 return;
             } // Is player ?
             Player shooter = (Player) ps; //From Entity (ps) to Player (shooter)
-            if (doesPlayerHaveRole(shooter, "ice")) { //To be reworked, Legacy
+            if (doesPlayerHaveRole(shooter, "ice")) {
                 event.setDamage(4);
             }
         }

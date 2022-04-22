@@ -52,9 +52,11 @@ public final class FirstPlugin extends JavaPlugin implements Listener {
     }
 }
 
-/*List of roles
-thief / Leap ability / Immune to fall dmg / Buffed speed \ Less Heart
-ice / Snowball deals dmg \ Less dmg
-mole / can insta break stone \
-ender / Do not get pearls consumed / Immune to pearls dmg/ has cooldown on pearls \ Get dmged in water
-*/
+/*
+List of roles
+thief / Leap ability (20s cd) / Immune to fall (and pearl) dmg/ Buffed speed (Speed 1 while moving) \ Less Heart(-2 hearts)
+ice / Snowball deals dmg (-2 hearts) \ Deals Less dmg (-1 heart per hit)
+mole / Can insta break stone \ no debuff
+ender / Do not get pearls consumed / Immune to pearls dmg / has cooldown on pearls(30s) \ Get dmged in water (Poison 1)
+shark / Conduit power (3) and Dolphin's grace (2) effect when in water \ no debuff
+*/ 
