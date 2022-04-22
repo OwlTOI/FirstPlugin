@@ -1,0 +1,6 @@
+me\toi\firstplugin\commands\AdminInfoCommands.class
+me\toi\firstplugin\FirstPlugin.class
+me\toi\firstplugin\listeners\PlayerMovementListener.class
+me\toi\firstplugin\FileToHashmap.class
+me\toi\firstplugin\listeners\PlayerBreakActionListener.class
+me\toi\firstplugin\listeners\ProjectileListener.class
