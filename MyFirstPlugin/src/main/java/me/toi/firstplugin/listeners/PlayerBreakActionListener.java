@@ -1,12 +1,13 @@
 package me.toi.firstplugin.listeners;
 
-import org.bukkit.ChatColor;
+
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -31,22 +32,11 @@ public class PlayerBreakActionListener implements Listener {
             }
         }
     }
-
     @EventHandler
-    public void onLaunchPearl(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
-        if (doesPlayerHaveRole(player, "ender")) { //if player has role Ender
-            if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                if (player.getInventory().getItemInMainHand().getType() == Material.ENDER_PEARL || (player.getInventory().getItemInOffHand().getType() == Material.ENDER_PEARL)) { //Check for pearl in hand
-                    if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis()) {
-                        long remaining = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
-                        player.sendMessage(ChatColor.RED + "This spell is on cooldown (" + remaining / 1000 + "s)");
-                        event.setCancelled(true);
-                    } else {
-                        player.getInventory().addItem(new ItemStack(Material.ENDER_PEARL, 1));
-                        cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (30 * 1000));
-                    }
-                }
+    public static void BlockBreak(BlockBreakEvent event){
+        if (event.getBlock().getType().equals(Material.SPAWNER)){
+            if(doesPlayerHaveRole(event.getPlayer(),"mole")){
+                event.setDropItems(true);
             }
         }
     }

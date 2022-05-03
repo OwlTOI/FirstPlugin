@@ -1,5 +1,7 @@
 me\toi\firstplugin\commands\AdminInfoCommands.class
+me\toi\firstplugin\SpellCooldown$1.class
 me\toi\firstplugin\FirstPlugin.class
+me\toi\firstplugin\SpellCooldown.class
 me\toi\firstplugin\listeners\PlayerMovementListener.class
 me\toi\firstplugin\FileToHashmap.class
 me\toi\firstplugin\listeners\PlayerBreakActionListener.class
